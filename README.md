@@ -62,6 +62,10 @@ Whether the element should be visible to begin with or not. If animateIn is an e
 
 How long to delay the animation for (in milliseconds) once it enters or leaves the view.
 
+**infinityAnimation** - default true
+
+Run animation one or many times.
+
 ## Development:
 
 In the project root:
