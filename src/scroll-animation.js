@@ -48,6 +48,7 @@ export default class ScrollAnimation extends Component {
         clearTimeout(tid);
       })
     }
+
     if (visible.completely !== this.state.lastVisibility.completely || visible.partially !== this.state.lastVisibility.partially) {
       const style = this.getStyle(visible);
       const classes = this.getClasses(visible);
@@ -59,7 +60,7 @@ export default class ScrollAnimation extends Component {
         var timeouts = this.state.timeouts.slice()
         timeouts.push(timeout);
         this.setState({timeouts: timeouts});
-      } else {
+      } else if (this.props.infinityAnimation) {
         this.setState({classes: classes, style: style, lastVisibility: visible});
       }
     }
@@ -122,7 +123,8 @@ ScrollAnimation.defaultProps = {
   offset: 100,
   duration: 1,
   initiallyVisible: false,
-  delay: 0
+  delay: 0,
+  infinityAnimation: true
 };
 
 ScrollAnimation.propTypes = {
@@ -131,5 +133,6 @@ ScrollAnimation.propTypes = {
   offset: PropTypes.number,
   duration: PropTypes.number,
   delay: PropTypes.number,
-  initiallyVisible: PropTypes.bool
+  initiallyVisible: PropTypes.bool,
+  infinityAnimation: PropTypes.bool
 };
